@@ -13,11 +13,69 @@
 %----------------------------------------------
 
 \begin{question}{Matrix Properties}{5}
-A colleague of yours suggests matrix addition and multiplication are similar to scalars, thus commutative, distributive and associative properties can be applied.
-Is the statement correct? Prove it analytically or give counterexamples (for both operations) considering three matrices $ A, B, C$ of size $n\times n$.
+A colleague of yours suggests matrix addition and multiplication are similar to scalars, 
+thus commutative, distributive and associative properties can be applied.
+Is the statement correct? 
+Prove it analytically or give counterexamples (for both operations) 
+considering three matrices $ A, B, C$ of size $n\times n$.
 
 \begin{answer}\end{answer}
-
+    For the matrix addition:\\
+    there is only commutative and commutative, no distributive.
+    Both commutative and associative can be applied. To prove it, firstly, we define\\
+    \begin{align*}
+        A = ( \begin{array}{c c c} 
+            a_{11} & \cdots & a_{1n} \\
+            \vdots & a_{ij} & \vdots \\ 
+            a_{n1} & \cdots & a_{nn} \end{array} )  \quad
+        B = ( \begin{array}{c c c} 
+            b_{11} & \cdots & b_{1n} \\
+            \vdots & b_{ij} & \vdots \\
+            b_{n1} & \cdots & b_{nn} \end{array} )  \quad
+        C = ( \begin{array}{c c c} 
+            c_{11} & \cdots & c_{1n} \\
+            \vdots & c_{ij} & \vdots \\
+            c_{n1} & \cdots & c_{nn} \end{array} )
+    \end{align*}
+    
+    
+    commutative:  $ A + B  =  B + A$, \\ \quad $ (A+B)_{ij}  =  A_{ij} + B_{ij} $, 
+    \quad $(B + A)_{ij}  =  b_{ij} + a_{ij} = a_{ij} + b_{ij} = (A+B)_{ij} $ \\
+    so $ A + B  =  B + A$   \\ 
+    associative:  $(A+B)+C = A +(B+C)$, \\ 
+    $((A+B)+C)_{ij} = ( a_{ij} + b_{ij} ) + c_{ij} =  a_{ij} + ( b_{ij}  + c_{ij} ) = (A+(B+C))_{ij} $ \\
+    so $ (A+B)+C = A+(B+C) $ \\
+    For the matrix multiplication:\\
+    the distributive and associative properties can be applied, but commutative not, to prove:\\
+    commutative:
+    \begin{align*}
+        A = ( \begin{array}{c c c} 
+            1 & 2 & 3 \\
+            4 & 5 & 6 \\ 
+            4 & 3 & 2 \end{array} )  \quad
+        B = ( \begin{array}{c c c} 
+            3 & 2 & 1 \\
+            6 & 5 & 4 \\ 
+            2 & 3 & 4 \end{array} )  
+    \end{align*}
+    \begin{align*}
+        A * B = ( \begin{array}{c c c} 
+            21 & 21 & 21 \\
+            54 & 51 & 48 \\ 
+            34 & 29 & 24 \end{array} )  \quad
+        B * A = ( \begin{array}{c c c} 
+            15 & 19 & 23 \\
+            42 & 49 & 56 \\ 
+            30 & 31 & 32 \end{array} )  
+    \end{align*}
+    distributive:\\
+    $(A+B)*C=A*C+B*C$\\
+    $((A+B)*C)_{ij} = \sum_{k=1}^n { (a_{ik}+b_{ik} )*c_{kj} } = \sum_{k=1}^n { a_{ik}*c_{kj} } + \sum_{k=1}^n{b_{ik}*c_{kj} }
+    = (A*C + B*C  )_{ij} $\\
+    associative:\\
+    $(A*B)*C = A*(B*C)$\\
+    $(A*B)*C = \sum_{j=1}^n (A*B)_{ij}*C_{jk} = \sum_{j=1}^n \sum_{l=1}^n a_{il}b_{lj}c_{jk} 
+    = \sum_{l=1}^n {a_{il}} \sum_{j=1}^n(b_{lj}*c_{jk}) = A*(B*C) $
 \end{question}
 
 %----------------------------------------------
@@ -41,7 +99,24 @@ If we change the matrix in
 \end{equation*}
 is it still invertible? Why?
 
-\begin{answer}\end{answer}
+\begin{answer}
+????????????????????????????????????????????\\
+The inverse matrix can be calculate by the equation:
+\begin{equation*}
+    A^{-1} = \frac{A^{*}}{|A|}, \quad (A^{*})^{T}_{ij} = (-1)^{i+j}*M_{ij}
+\end{equation*}
+$A^{*}$ is the adjugate matrix, $M_{ij}$ is minor of A, 
+i.e. the determinant of the $(n - 1)*(n - 1)$ matrix that results from deleting row i and column j of A.\\ 
+
+It will not be invertible for the new matrix, because the determinante $|A| = 0$, i.e. it does not have the full rank.
+And as to the pointed equation $A^{*} / |A|$ to calculate the inverse matrix, it's obvious not invertible.
+\end{answer}
+\begin{equation*}
+    A^{-1} = \frac{1}{} ( \begin{array}{c c c} 
+    1 & 2 & 3 \\
+    1 & 2 & 4 \\
+    1 & 2 & 5 \end{array} )
+\end{equation*}
 
 \end{question}
 	
