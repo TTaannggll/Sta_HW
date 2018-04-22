@@ -19,7 +19,9 @@ Is the statement correct?
 Prove it analytically or give counterexamples (for both operations) 
 considering three matrices $ A, B, C$ of size $n\times n$.
 
-\begin{answer}\end{answer}
+\begin{answer}
+
+    !!!!!!!!!!!!!* instead Times!!!!!!!!!!!
     For the matrix addition:\\
     there is only commutative and commutative, no distributive.
     Both commutative and associative can be applied. To prove it, firstly, we define\\
@@ -76,6 +78,8 @@ considering three matrices $ A, B, C$ of size $n\times n$.
     $(A*B)*C = A*(B*C)$\\
     $(A*B)*C = \sum_{j=1}^n (A*B)_{ij}*C_{jk} = \sum_{j=1}^n \sum_{l=1}^n a_{il}b_{lj}c_{jk} 
     = \sum_{l=1}^n {a_{il}} \sum_{j=1}^n(b_{lj}*c_{jk}) = A*(B*C) $
+
+\end{answer}
 \end{question}
 
 %----------------------------------------------
@@ -100,24 +104,25 @@ If we change the matrix in
 is it still invertible? Why?
 
 \begin{answer}
-????????????????????????????????????????????\\
 The inverse matrix can be calculate by the equation:
 \begin{equation*}
     A^{-1} = \frac{A^{*}}{|A|}, \quad (A^{*})^{T}_{ij} = (-1)^{i+j}*M_{ij}
 \end{equation*}
 $A^{*}$ is the adjugate matrix, $M_{ij}$ is minor of A, 
 i.e. the determinant of the $(n - 1)*(n - 1)$ matrix that results from deleting row i and column j of A.\\ 
-
+\begin{equation*}
+    A^{-1} = \frac{1}{-2} ( \begin{array}{c c c} 
+    -6 & 2 & 2 \\
+    -1 & 2 & -1 \\
+    2 & -2 & 0 \end{array} ) \quad = \quad
+       ( \begin{array}{c c c} 
+        3 & -1 & -1 \\
+        0.5 & -1 & 0.5 \\
+       -1 & 1 & 0 \end{array} )
+\end{equation*}
 It will not be invertible for the new matrix, because the determinante $|A| = 0$, i.e. it does not have the full rank.
 And as to the pointed equation $A^{*} / |A|$ to calculate the inverse matrix, it's obvious not invertible.
 \end{answer}
-\begin{equation*}
-    A^{-1} = \frac{1}{} ( \begin{array}{c c c} 
-    1 & 2 & 3 \\
-    1 & 2 & 4 \\
-    1 & 2 & 5 \end{array} )
-\end{equation*}
-
 \end{question}
 	
 %----------------------------------------------
@@ -127,7 +132,19 @@ And as to the pointed equation $A^{*} / |A|$ to calculate the inverse matrix, it
 	
 	Given $A \in \R^{2 \times 3}$, which one does exist? Write down the equation for computing it, specifying the dimensionality of the matrices in the intermediate steps.
 	
-\begin{answer}\end{answer}
+\begin{answer}
+
+The right pseudoinverse require the full row rank. $A^{\dagger} = A^T (AA^T)^{-1} $\\
+The left pseudoinverse require the full column rank. $A^{\dagger} =  (A^T A)^{-1}A^T $\\
+It's also usefull to use SVD decomposition($A = U \Sigma V^{T},\quad A^{\dagger} = V \Sigma ^{+}U^{T} $) or QR decomposition or other methods by some special case like singularities, e.t.c.\\
+
+For the given $A$. It's obvious that the full column rank can not be satisfied but row rank can. So only right pseudoinverse can exist. \\
+\begin{equation*}
+    A^{\dagger} = \underbrace { 
+        \underbrace{A^T}_{\R^{3\times 2}}  \underbrace{ (AA^T)^{-1} }_{ \R^{2\times 3} \times \R^{3\times 2} \to \R^{2\times 2}  }  
+        }_{ \R^{2 \times 2}      }  
+\end{equation*}
+\end{answer}
 \end{question}
 
 %----------------------------------------------
@@ -135,7 +152,20 @@ And as to the pointed equation $A^{*} / |A|$ to calculate the inverse matrix, it
 \begin{question}{Eigenvectors \& Eigenvalues}{6}
 What are eigenvectors and eigenvalues of a matrix $A$? Briefly explain why they are important in Machine Learning.
 
-\begin{answer}\end{answer}
+\begin{answer}
+
+!!!!!!!!!To improve
+    \\
+
+Definition: A scalar $\lambda$ is called an eigenvalue of the $n \times n$ matrix $\vec A$ is there is a nontrivial solution $\vec x$ (i.e. $\vec x \ne \vec 0$) of
+$\vec {Ax} = \lambda  \vec{x}  $, such an $\vec x$ is called an eigenvector corresponding to the eigenvalue $\lambda$\\
+\\
+The importance is also obvious, especially it's crucial by the dimensionality reduction. As we know, coping with features that we get, $\vec{\Psi}$, usually means a big dataset 
+and more generally, the curse of dimensionality. Using the Eigenvectors and Eigenvalues, which is just linear transformation(rotation), 
+we can get the basis direction that gives us most information and remove 
+redundant or weak dimension form consideration. It's efficient to change the dimensionality of the data and the key to SVD(Singular Value Decomposition) and PCA(Principal component analysis).
+
+\end{answer}
 
 \end{question}
 
